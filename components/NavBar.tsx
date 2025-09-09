@@ -4,7 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-const links = [
+type NavLink = {
+  href: `/${string}`; // ✅ typed route string
+  label: string;
+};
+
+const links: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
@@ -24,7 +29,7 @@ export default function NavBar() {
           {links.map((l) => (
             <Link
               key={l.href}
-              href={l.href}
+              href={l.href as string} // ✅ cast ensures TS accepts
               className={clsx(
                 "text-sm font-medium hover:text-primary transition",
                 pathname === l.href && "text-primary"
