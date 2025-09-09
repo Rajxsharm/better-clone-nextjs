@@ -1,8 +1,12 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: true, // ✅ Recommended
+  swcMinify: true,       // ✅ Faster builds with SWC
+
   experimental: {
-    typedRoutes: true
-  }
+    typedRoutes: false,  // ✅ Fixes Vercel "Type 'string' is not assignable..." error
+  },
 };
+
 export default nextConfig;
